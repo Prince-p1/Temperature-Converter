@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Convert0r</title>
+    <style>
+        body{
+            padding: 50px 100px;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            text-align: center;
+            background-color: rgb(43, 226, 104);
+            padding: 50px;
+        }
+        .input-div{
+            display: inline-block;
+        }
+        .inp{
+            padding: 5px 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Convertor</h1>
+    <div id="container">
+        <div class="input-div">
+            <label >Celsius</label><br>
+            <input type="number" value="0" id="cel" class="inp">
+        </div>
+        <div class="input-div">
+            <label>Fahrenheit </label><br> 
+            <input type="number" value="32" id="fah" class="inp">
+        </div>
+        <div class="input-div">
+            <label >Kelvin</label><br>
+            <input type="number" value="0" id="kel" class="inp">
+        </div>
+    </div>
+    <script>
+        var cel = document.getElementById("cel");
+        var fah = document.getElementById("fah");
+        var kel = document.getElementById("kel");
+        cel.addEventListener('input', function() {
+            let c = parseFloat(this.value);
+            let f = (c * 9/5) + 32;
+            let k = c + 273.15; 
+            if (!Number.isNaN(f)) {
+                fah.value = f.toFixed(3);
+            }
+            if (!Number.isNaN(k)) {
+                kel.value = k.toFixed(3);
+            }
+        });
+        fah.addEventListener('input', function() {
+            let f = parseFloat(this.value);
+            let c = (f - 32) * 5/9;
+            let k = ((f - 32) * 5/9) + 273.15; 
+            if (!Number.isNaN(c)) {
+                cel.value = c.toFixed(3);
+            }
+            if (!Number.isNaN(k)) {
+                kel.value = k.toFixed(3);
+            }
+        });
+        kel.addEventListener('input', function() {
+            let k = parseFloat(this.value);
+            let c = k - 273.15; 
+            let f = (c * 9/5) + 32;
+            if (!Number.isNaN(c)) {
+                cel.value = c.toFixed(3);
+            }
+            if (!Number.isNaN(f)) {
+                fah.value = f.toFixed(3);
+            }
+        });
+    </script>
+    
+</body>
+</html>
